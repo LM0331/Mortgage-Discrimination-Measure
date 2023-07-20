@@ -1,4 +1,4 @@
-
+###Programmers: Leah Moubadder and Maya Bliss
 pacman::p_load(dplyr,
                readr,
                readxl,
@@ -146,12 +146,12 @@ all_years <- rbind(h10_11_update, h12_14) %>%
                                 if_else(applicant_sex == 2, 2,
                                         if_else(applicant_sex %in% 3:4, 3, 3))),
     loan_income_ratio = loan_amount_000s / applicant_income_000s) %>% 
-  filter(!is.na(loan_income_ratio))
+  filter(!is.na(loan_income_ratio) & !is.na(denial))
 
 rm(hmda12, hmda13, hmda14, h10_11, h10_11_r, h10_11_update, h12_14, h12_14_r, crosswalk, cw2)
 
 #Load geomtry data from ACS 
-census_api_key('1d0ba87279d9ea5aac406b0f11f585e6515784ef')
+census_api_key('1d0ba87279d9ea5aac406b0f11f585e6515784ef', install = TRUE)
 abbreviations <- state.abb[-c(2, 11)] #state abbreviations for all contiguous US
 vars10 <- c("P005003")
 US <- get_decennial(geography = "tract", variables = vars10, year = 2010,
@@ -200,7 +200,7 @@ rm(all_years)
 #list of all US MSAs (384)
 cities <- (msaUS$cbsa)
 
-#loans applied for in the 
+#loans applied for in the contiguous
 hmda_geo2 <- hmda_geo %>% 
   filter(cbsa %in% cities) 
 
@@ -208,8 +208,6 @@ rm(US, cbsa19, msaUS, hmda_geo)
 
 #380 MSAs (total MSAs in US is 384, 2 in HI and 2 in AK)
 city_codes <- as.character(unique(hmda_geo2$cbsa))
-
-city_codes <- city_codes[city_codes != "12060"] #remove NYC MSA (need cluster for this!!)
 
 my_func <- function(city_code) {
   # create new hmda_geo for each city_code
@@ -283,5 +281,7 @@ for (city_code in city_codes) {
   alldata_list[[city_code]] <- alldata_city
 }
 
-write_rds(alldata_list, here::here("bayesian_US.rds"))
+alldata <- do.call(rbind, alldata_list)
+
+write_rds(alldata, here::here("bayesian_NC.rds"))
 
