@@ -1,2 +1,2 @@
 # Mortgage-Discrimination-Measure
-TBD
+README forthcoming
