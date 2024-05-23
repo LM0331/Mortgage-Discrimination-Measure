@@ -5,4 +5,4 @@ List of all core-based statistical areas (CBSA) in the US. Subsetted during proc
 cbsa-est2019-alldata.csv
 
 Crosswalk file to bridge 2000 and 2010 census tracts:
-us2010trf.txt
+census_2000_2010_1.csv
