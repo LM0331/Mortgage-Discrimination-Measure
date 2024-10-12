@@ -10,5 +10,10 @@ We estimated the relative risk of mortgage denial within each census tract compa
 ## Considerations
 All census tracts within the 380 MSAs in the contiguous US were included for completeness and transportability, irrespective of their population size or liviability. This resulted in some tract-level estimates of mortgage denial risk that are implausible (e.g., the census tract of the Statue of Liberty) or unstable estimates, even while using Bayesian approach. We suggest care be taken when applying these estimates. Moreover, researchers are welcome to replicate this analysis within their geographic areas of interest and adjust the process to institute additional or different exclusion criteria. 
 
+## Files
+
+allMSAs_post: Calculated contemporary mortgage discrimination measure
+sensitivity_analysis: sensitivity analysis restricting property type to only one-to-four family property type
+
 Link to preprint: 
 https://www.researchsquare.com/article/rs-4419606/v1
