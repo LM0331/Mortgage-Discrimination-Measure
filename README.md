@@ -12,7 +12,7 @@ All census tracts within the 380 MSAs in the contiguous US were included for com
 
 ## Files
 
-allMSAs_post: Calculated contemporary mortgage discrimination measure
+allMSAs_post: Calculated contemporary mortgage discrimination measure     
 sensitivity_analysis: sensitivity analysis restricting property type to only one-to-four family property type
 
 Link to preprint: 
